@@ -163,6 +163,32 @@ MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios WHERE id=1;
 +----+----------------------------+--------+
 1 row in set (0.000 sec)
 
-MariaDB [appsalon]>
+MariaDB [appsalon]> UPDATE servicios SET precio = 70 WHERE id = 2;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
+MariaDB [appsalon]> SELECT * FROM servicios;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  1 | Corte de cabello de adulto |  80.00 |
+|  2 | Corte de cabello niño      |  70.00 |
+|  3 | Peinado mujer              |  80.00 |
+|  4 | Peinado hombre             |  80.00 |
++----+----------------------------+--------+
+4 rows in set (0.000 sec)
 
+MariaDB [appsalon]> UPDATE servicios SET nombre = "Corte cabello HxH", precio = 120 WHERE id=1;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [appsalon]> SELECT * FROM servicios;
++----+-----------------------+--------+
+| id | nombre                | precio |
++----+-----------------------+--------+
+|  1 | Corte cabello HxH     | 120.00 |
+|  2 | Corte de cabello niño |  70.00 |
+|  3 | Peinado mujer         |  80.00 |
+|  4 | Peinado hombre        |  80.00 |
++----+-----------------------+--------+
+4 rows in set (0.000 sec)
