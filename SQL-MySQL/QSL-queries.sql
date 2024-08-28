@@ -49,4 +49,24 @@ MariaDB [appsalon]> describe servicios;
 +--------+--------------+------+-----+---------+----------------+
 3 rows in set (0.015 sec)
 
-MariaDB [appsalon]>
+MariaDB [appsalon]> INSERT INTO servicios (nombre,precio)values("Corte de cabello de adulto",80);
+Query OK, 1 row affected (0.068 sec)
+
+MariaDB [appsalon]> INSERT INTO servicios (nombre,precio)values("Corte de cabello niño",60);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [appsalon]> describe servicios;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nombre | varchar(60)  | NO   |     | NULL    |                |
+| precio | decimal(6,2) | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+3 rows in set (0.018 sec)
+
+MariaDB [appsalon]> INSERT INTO servicios (nombre,precio)values
+    -> ('Peinado mujer',80),
+    -> ('Peinado hombre',80);
+Query OK, 2 rows affected (0.003 sec)
+Records: 2  Duplicates: 0  Warnings: 0
