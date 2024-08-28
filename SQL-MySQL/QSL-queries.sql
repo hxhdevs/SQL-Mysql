@@ -70,3 +70,99 @@ MariaDB [appsalon]> INSERT INTO servicios (nombre,precio)values
     -> ('Peinado hombre',80);
 Query OK, 2 rows affected (0.003 sec)
 Records: 2  Duplicates: 0  Warnings: 0
+-- ## Seleccionando elementos de la tabla
+MariaDB [appsalon]> select * from servicios;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  1 | Corte de cabello de adulto |  80.00 |
+|  2 | Corte de cabello niño      |  60.00 |
+|  3 | Peinado mujer              |  80.00 |
+|  4 | Peinado hombre             |  80.00 |
++----+----------------------------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT nombre FROM servicios;
++----------------------------+
+| nombre                     |
++----------------------------+
+| Corte de cabello de adulto |
+| Corte de cabello niño      |
+| Peinado mujer              |
+| Peinado hombre             |
++----------------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT nombre,precio FROM servicios;
++----------------------------+--------+
+| nombre                     | precio |
++----------------------------+--------+
+| Corte de cabello de adulto |  80.00 |
+| Corte de cabello niño      |  60.00 |
+| Peinado mujer              |  80.00 |
+| Peinado hombre             |  80.00 |
++----------------------------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  1 | Corte de cabello de adulto |  80.00 |
+|  2 | Corte de cabello niño      |  60.00 |
+|  3 | Peinado mujer              |  80.00 |
+|  4 | Peinado hombre             |  80.00 |
++----+----------------------------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios ORDER BY precio;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  2 | Corte de cabello niño      |  60.00 |
+|  1 | Corte de cabello de adulto |  80.00 |
+|  3 | Peinado mujer              |  80.00 |
+|  4 | Peinado hombre             |  80.00 |
++----+----------------------------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios ORDER BY precio ASC;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  2 | Corte de cabello niño      |  60.00 |
+|  1 | Corte de cabello de adulto |  80.00 |
+|  3 | Peinado mujer              |  80.00 |
+|  4 | Peinado hombre             |  80.00 |
++----+----------------------------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios LIMIT 2;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  1 | Corte de cabello de adulto |  80.00 |
+|  2 | Corte de cabello niño      |  60.00 |
++----+----------------------------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios ORDER BY id DESC LIMIT 2;
++----+----------------+--------+
+| id | nombre         | precio |
++----+----------------+--------+
+|  4 | Peinado hombre |  80.00 |
+|  3 | Peinado mujer  |  80.00 |
++----+----------------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT id,nombre,precio FROM servicios WHERE id=1;
++----+----------------------------+--------+
+| id | nombre                     | precio |
++----+----------------------------+--------+
+|  1 | Corte de cabello de adulto |  80.00 |
++----+----------------------------+--------+
+1 row in set (0.000 sec)
+
+MariaDB [appsalon]>
+
+
