@@ -192,3 +192,16 @@ MariaDB [appsalon]> SELECT * FROM servicios;
 |  4 | Peinado hombre        |  80.00 |
 +----+-----------------------+--------+
 4 rows in set (0.000 sec)
+-- # Eliminando un registro
+MariaDB [appsalon]> DELETE FROM servicios WHERE id = 4;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [appsalon]> SELECT * FROM servicios;
++----+-----------------------+--------+
+| id | nombre                | precio |
++----+-----------------------+--------+
+|  1 | Corte cabello HxH     | 120.00 |
+|  2 | Corte de cabello niño |  70.00 |
+|  3 | Peinado mujer         |  80.00 |
++----+-----------------------+--------+
+3 rows in set (0.001 sec)
