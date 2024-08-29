@@ -340,3 +340,21 @@ Query OK, 0 rows affected (0.011 sec)
         ('Uñas', 400),
         ('Lavado de Cabello', 50),
         ('Tratamiento Capilar', 150);
+-- Selecionamos segun sea el precio puede ser igual mayor o menor que el monto fijado        
+MariaDB [appsalon]> SELECT * FROM servicios WHERE precio >90;
++----+---------------------+--------+
+| id | nombre              | precio |
++----+---------------------+--------+
+|  6 | Tinte               | 300.00 |
+|  7 | Uñas                | 400.00 |
+|  9 | Tratamiento Capilar | 150.00 |
++----+---------------------+--------+
+3 rows in set (0.000 sec)
+-- HAciendo uso del BETWEEN
+MariaDB [appsalon]> SELECT * FROM servicios WHERE precio BETWEEN 100 AND 200;
++----+---------------------+--------+
+| id | nombre              | precio |
++----+---------------------+--------+
+|  9 | Tratamiento Capilar | 150.00 |
++----+---------------------+--------+
+1 row in set (0.000 sec)
