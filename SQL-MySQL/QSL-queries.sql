@@ -358,3 +358,47 @@ MariaDB [appsalon]> SELECT * FROM servicios WHERE precio BETWEEN 100 AND 200;
 |  9 | Tratamiento Capilar | 150.00 |
 +----+---------------------+--------+
 1 row in set (0.000 sec)
+
+-- Aplicando otros selectores en MYSQL.
+
+-- Contando cantidad de reservaciones por fecha
+MariaDB [appsalon]> SELECT COUNT(id), fecha
+    -> FROM reservaciones
+    -> GROUP BY fecha
+    -> ORDER BY COUNT(id) DESC;
++-----------+------------+
+| COUNT(id) | fecha      |
++-----------+------------+
+|         7 | 2021-07-02 |
+|         6 | 2021-06-28 |
+|         6 | 2021-07-30 |
+|         6 | 2021-06-25 |
+|         6 | 2021-07-01 |
++-----------+------------+
+5 rows in set (0.001 sec)
+-- Aplicando sumatoria al costo total de los servicios
+MariaDB [appsalon]> SELECT SUM(precio) AS totalServicios FROM servicios;
++----------------+
+| totalServicios |
++----------------+
+|        1240.00 |
++----------------+
+1 row in set (0.000 sec)
+
+-- Obtendiendo el costo mayor y menor de los servicios
+MariaDB [appsalon]> SELECT MIN(precio) AS precioMenor FROM servicios;
++-------------+
+| precioMenor |
++-------------+
+|       50.00 |
++-------------+
+1 row in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT MAX(precio) AS precioMayor FROM servicios;
++-------------+
+| precioMayor |
++-------------+
+|      400.00 |
++-------------+
+1 row in set (0.000 sec)
+
