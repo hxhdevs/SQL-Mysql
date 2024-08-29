@@ -205,3 +205,72 @@ MariaDB [appsalon]> SELECT * FROM servicios;
 |  3 | Peinado mujer         |  80.00 |
 +----+-----------------------+--------+
 3 rows in set (0.001 sec)
+
+MariaDB [appsalon]> ALTER TABLE servicios ADD descripcion VARCHAR(100) NOT NULL;
+Query OK, 0 rows affected (0.009 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [appsalon]> DESCRIBE servicios;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nombre      | varchar(60)  | NO   |     | NULL    |                |
+| precio      | decimal(6,2) | NO   |     | NULL    |                |
+| descripcion | varchar(100) | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.016 sec)
+MariaDB [appsalon]> SELECT * FROM servicios;
++----+-----------------------+--------+-------------+
+| id | nombre                | precio | descripcion |
++----+-----------------------+--------+-------------+
+|  1 | Corte cabello HxH     | 120.00 |             |
+|  2 | Corte de cabello niño |  70.00 |             |
+|  3 | Peinado mujer         |  80.00 |             |
++----+-----------------------+--------+-------------+
+3 rows in set (0.001 sec)
+
+MariaDB [appsalon]> ALTER TABLE servicios CHANGE descripcion nuevonombre VARCHAR(20) NOT NULL;
+Query OK, 3 rows affected (0.053 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [appsalon]> DESCRIBE servicios;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nombre      | varchar(60)  | NO   |     | NULL    |                |
+| precio      | decimal(6,2) | NO   |     | NULL    |                |
+| nuevonombre | varchar(20)  | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.017 sec)
+
+MariaDB [appsalon]> ALTER TABLE servicios CHANGE nuevonombre descripcion VARCHAR(20) NOT NULL;
+Query OK, 0 rows affected (0.008 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [appsalon]> SELECT * FROM servicios;
++----+-----------------------+--------+-------------+
+| id | nombre                | precio | descripcion |
++----+-----------------------+--------+-------------+
+|  1 | Corte cabello HxH     | 120.00 |             |
+|  2 | Corte de cabello niño |  70.00 |             |
+|  3 | Peinado mujer         |  80.00 |             |
+|  5 | Peinado               | 100.00 | Hola        |
++----+-----------------------+--------+-------------+
+4 rows in set (0.000 sec)
+
+MariaDB [appsalon]> ALTER TABLE servicios DROP COLUMN descripcion;
+Query OK, 0 rows affected (0.009 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [appsalon]> SELECT * FROM servicios;
++----+-----------------------+--------+
+| id | nombre                | precio |
++----+-----------------------+--------+
+|  1 | Corte cabello HxH     | 120.00 |
+|  2 | Corte de cabello niño |  70.00 |
+|  3 | Peinado mujer         |  80.00 |
+|  5 | Peinado               | 100.00 |
++----+-----------------------+--------+
+4 rows in set (0.000 sec)
