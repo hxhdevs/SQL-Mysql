@@ -402,3 +402,33 @@ MariaDB [appsalon]> SELECT MAX(precio) AS precioMayor FROM servicios;
 +-------------+
 1 row in set (0.000 sec)
 
+--Como hacer una busqueda en MYSQL
+
+-- Aqui solo busca resultados que inicien con la palabra a buscar
+MariaDB [appsalon]> SELECT * FROM servicios WHERE nombre LIKE 'Corte%';
++----+-------------------------+--------+
+| id | nombre                  | precio |
++----+-------------------------+--------+
+|  1 | Corte de Cabello Niño   |  60.00 |
+|  2 | Corte de Cabello Hombre |  80.00 |
+|  3 | Corte de Barba          |  60.00 |
++----+-------------------------+--------+
+3 rows in set (0.000 sec)
+-- Aqui solo busca resultados que terminen con la palabra a buscar
+MariaDB [appsalon]> SELECT * FROM servicios WHERE nombre LIKE '%Cabello';
++----+-------------------+--------+
+| id | nombre            | precio |
++----+-------------------+--------+
+|  8 | Lavado de Cabello |  50.00 |
++----+-------------------+--------+
+1 row in set (0.000 sec)
+-- Aqui solo busca resultados que contengan en algun punto de su cuerpo la palabra a buscar
+MariaDB [appsalon]> SELECT * FROM servicios WHERE nombre LIKE '%orte%';
++----+-------------------------+--------+
+| id | nombre                  | precio |
++----+-------------------------+--------+
+|  1 | Corte de Cabello Niño   |  60.00 |
+|  2 | Corte de Cabello Hombre |  80.00 |
+|  3 | Corte de Barba          |  60.00 |
++----+-------------------------+--------+
+3 rows in set (0.000 sec)
