@@ -540,3 +540,42 @@ MariaDB [appsalon]> SELECT * FROM clientes;
 |  1 | Elih   | Freecs   | 9531226488 | hxh@mail.com |
 +----+--------+----------+------------+--------------+
 1 row in set (0.000 sec)
+
+--Relacionando 2 tablas
+MariaDB [appsalon]> CREATE TABLE citas(
+    -> id INT(11) not null auto_increment,
+    -> fecha date not null,
+    -> hora time not null,
+    -> clienteId int(11) not null,
+    -> primary key (id),
+    -> key clienteId (clienteId),
+    -> constraint cliente_FK
+    -> foreign key(clienteId)
+    -> references clientes(id)
+    -> );
+Query OK, 0 rows affected (0.032 sec)
+-- Cuando se relacionan dos tablas ambas columnas deben tener el mismo tipo de valor y longitud y al agregar previamente CONSTRAINT limitamos a que solo acepte valores que 
+-- estan en la tabla relacionado
+MariaDB [appsalon]> describe citas;
++-----------+---------+------+-----+---------+----------------+
+| Field     | Type    | Null | Key | Default | Extra          |
++-----------+---------+------+-----+---------+----------------+
+| id        | int(11) | NO   | PRI | NULL    | auto_increment |
+| fecha     | date    | NO   |     | NULL    |                |
+| hora      | time    | NO   |     | NULL    |                |
+| clienteId | int(11) | NO   | MUL | NULL    |                |
++-----------+---------+------+-----+---------+----------------+
+4 rows in set (0.015 sec)
+
+MariaDB [appsalon]> describe clientes;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombre   | varchar(60) | NO   |     | NULL    |                |
+| apellido | varchar(60) | NO   |     | NULL    |                |
+| telefono | varchar(10) | NO   |     | NULL    |                |
+| email    | varchar(30) | NO   | UNI | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.014 sec)
+
