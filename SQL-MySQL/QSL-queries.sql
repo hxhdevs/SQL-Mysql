@@ -432,3 +432,60 @@ MariaDB [appsalon]> SELECT * FROM servicios WHERE nombre LIKE '%orte%';
 |  3 | Corte de Barba          |  60.00 |
 +----+-------------------------+--------+
 3 rows in set (0.000 sec)
+-- Como concatenar dos columnas
+MariaDB [appsalon]> SELECT CONCAT(nombre,' ',apellido) AS nombreCompleto FROM reservaciones;
++--------------------+
+| nombreCompleto     |
++--------------------+
+| Juan De la torre   |
+| Antonio Hernandez  |
+| Pedro Juarez       |
+| Mireya Perez       |
+| Jose Castillo      |
+| Maria Diaz         |
+| Clara Duran        |
+| Miriam Ibañez      |
+| Samuel Reyes       |
+| Joaquin Muñoz      |
+| Julia Lopez        |
+| Carmen Ruiz        |
+| Isaac Sala         |
+| Ana Preciado       |
+| Sergio Iglesias    |
+| Aina Acosta        |
+| Carlos Ortiz       |
+| Roberto Serrano    |
+| Carlota Perez      |
+| Ana Maria Igleias  |
+| Jaime Jimenez      |
+| Roberto Torres     |
+| Juan Cano          |
+| Santiago Hernandez |
+| Berta Gomez        |
+| Miriam Dominguez   |
+| Antonio Castro     |
+| Hugo Alonso        |
+| Victoria Perez     |
+| Jimena Leon        |
+| Raquel Peña        |
++--------------------+
+31 rows in set (0.000 sec)
+-- Buscando con mas especificidad
+MariaDB [appsalon]> SELECT * FROM reservaciones WHERE CONCAT(nombre, " ",apellido) LIKE '%Ana Preciado%';
++----+--------+----------+----------+------------+------------------------+
+| id | nombre | apellido | hora     | fecha      | servicios              |
++----+--------+----------+----------+------------+------------------------+
+| 14 | Ana    | Preciado | 14:30:00 | 2021-06-28 | Corte de Cabello Mujer |
++----+--------+----------+----------+------------+------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [appsalon]> SELECT hora, fecha, CONCAT(nombre," ",apellido) as 'Nombre Completo'
+    -> FROM reservaciones
+    -> WHERE CONCAT(nombre," ",apellido)
+    -> LIKE '%Ana Preciado%';
++----------+------------+-----------------+
+| hora     | fecha      | Nombre Completo |
++----------+------------+-----------------+
+| 14:30:00 | 2021-06-28 | Ana Preciado    |
++----------+------------+-----------------+
+1 row in set (0.000 sec)
