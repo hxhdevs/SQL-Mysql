@@ -508,3 +508,35 @@ MariaDB [appsalon]> SELECT * FROM reservaciones WHERE fecha="2021-06-28" AND id 
 | 10 | Joaquin | Muñoz       | 19:00:00 | 2021-06-28 | Tratamiento Capilar                     |
 +----+---------+-------------+----------+------------+-----------------------------------------+
 2 rows in set (0.001 sec)
+
+--Creando tabla normalizada
+MariaDB [appsalon]> CREATE TABLE clientes(
+    -> id INT(11)NOT NULL AUTO_INCREMENT,
+    -> nombre VARCHAR(60) NOT NULL,
+    -> apellido VARCHAR(60) NOT NULL,
+    -> telefono VARCHAR(10) NOT NULL,
+    -> email VARCHAR(30) NOT NULL UNIQUE,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.032 sec)
+
+MariaDB [appsalon]> show tables;
++--------------------+
+| Tables_in_appsalon |
++--------------------+
+| clientes           |
+| reservaciones      |
+| servicios          |
++--------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [appsalon]> INSERT INTO clientes(nombre, apellido, telefono,email) VALUES
+    -> ("Elih","Freecs","9531226488","hxh@mail.com");
+Query OK, 1 row affected (0.004 sec)
+MariaDB [appsalon]> SELECT * FROM clientes;
++----+--------+----------+------------+--------------+
+| id | nombre | apellido | telefono   | email        |
++----+--------+----------+------------+--------------+
+|  1 | Elih   | Freecs   | 9531226488 | hxh@mail.com |
++----+--------+----------+------------+--------------+
+1 row in set (0.000 sec)
