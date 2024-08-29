@@ -489,3 +489,22 @@ MariaDB [appsalon]> SELECT hora, fecha, CONCAT(nombre," ",apellido) as 'Nombre C
 | 14:30:00 | 2021-06-28 | Ana Preciado    |
 +----------+------------+-----------------+
 1 row in set (0.000 sec)
+
+--Revision multiple con IN y AND
+MariaDB [appsalon]> SELECT * FROM reservaciones WHERE id IN(1,3);
++----+--------+-------------+----------+------------+-----------------------------------------+
+| id | nombre | apellido    | hora     | fecha      | servicios                               |
++----+--------+-------------+----------+------------+-----------------------------------------+
+|  1 | Juan   | De la torre | 10:30:00 | 2021-06-28 | Corte de Cabello Adulto, Corte de Barba |
+|  3 | Pedro  | Juarez      | 20:00:00 | 2021-06-25 | Corte de Cabello Adulto                 |
++----+--------+-------------+----------+------------+-----------------------------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [appsalon]> SELECT * FROM reservaciones WHERE fecha="2021-06-28" AND id IN(1,10);
++----+---------+-------------+----------+------------+-----------------------------------------+
+| id | nombre  | apellido    | hora     | fecha      | servicios                               |
++----+---------+-------------+----------+------------+-----------------------------------------+
+|  1 | Juan    | De la torre | 10:30:00 | 2021-06-28 | Corte de Cabello Adulto, Corte de Barba |
+| 10 | Joaquin | Muñoz       | 19:00:00 | 2021-06-28 | Tratamiento Capilar                     |
++----+---------+-------------+----------+------------+-----------------------------------------+
+2 rows in set (0.001 sec)
