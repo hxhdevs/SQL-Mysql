@@ -623,3 +623,16 @@ MariaDB [appsalon]> show tables;
 -- Insertando valores a la pivote
 MariaDB [appsalon]> INSERT INTO citasservicios(citaId, servicioId) VALUES (1,8);
 Query OK, 1 row affected (0.003 sec)
+
+-- Consultando la informacion de una tabla pivote con m,ultiples JOIN
+MariaDB [appsalon]> SELECT * FROM citasservicios
+    -> LEFT JOIN citas ON citas.id = citasservicios.citaId
+    -> LEFT JOIN servicios on servicios.id =citasservicios.servicioId;
++----+--------+------------+------+------------+----------+-----------+------+-----------------------+--------+
+| id | citaId | servicioId | id   | fecha      | hora     | clienteId | id   | nombre                | precio |
++----+--------+------------+------+------------+----------+-----------+------+-----------------------+--------+
+|  1 |      1 |          1 |    1 | 2024-08-29 | 00:00:00 |         1 |    1 | Corte de Cabello Niño |  60.00 |
+|  2 |      1 |          8 |    1 | 2024-08-29 | 00:00:00 |         1 |    8 | Lavado de Cabello     |  50.00 |
+|  3 |      1 |          8 |    1 | 2024-08-29 | 00:00:00 |         1 |    8 | Lavado de Cabello     |  50.00 |
++----+--------+------------+------+------------+----------+-----------+------+-----------------------+--------+
+3 rows in set (0.000 sec)
