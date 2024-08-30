@@ -636,3 +636,17 @@ MariaDB [appsalon]> SELECT * FROM citasservicios
 |  3 |      1 |          8 |    1 | 2024-08-29 | 00:00:00 |         1 |    8 | Lavado de Cabello     |  50.00 |
 +----+--------+------------+------+------------+----------+-----------+------+-----------------------+--------+
 3 rows in set (0.000 sec)
+
+-- Aplicando JOIN multiple
+MariaDB [appsalon]> SELECT * FROM citasservicios
+    -> LEFT JOIN citas On citas.id = citasservicios.citaId
+    -> LEFT JOIN clientes ON citas.clienteId = clientes.id
+    -> LEFT JOIN servicios ON servicios.id = citasservicios.servicioId;
++----+--------+------------+------+------------+----------+-----------+------+--------+----------+------------+--------------+------+-----------------------+--------+
+| id | citaId | servicioId | id   | fecha      | hora     | clienteId | id   | nombre | apellido | telefono   | email        | id   | nombre                | precio |
++----+--------+------------+------+------------+----------+-----------+------+--------+----------+------------+--------------+------+-----------------------+--------+
+|  1 |      1 |          1 |    1 | 2024-08-29 | 00:00:00 |         1 |    1 | Elih   | Freecs   | 9531226488 | hxh@mail.com |    1 | Corte de Cabello Niño |  60.00 |
+|  2 |      1 |          8 |    1 | 2024-08-29 | 00:00:00 |         1 |    1 | Elih   | Freecs   | 9531226488 | hxh@mail.com |    8 | Lavado de Cabello     |  50.00 |
+|  3 |      1 |          8 |    1 | 2024-08-29 | 00:00:00 |         1 |    1 | Elih   | Freecs   | 9531226488 | hxh@mail.com |    8 | Lavado de Cabello     |  50.00 |
++----+--------+------------+------+------------+----------+-----------+------+--------+----------+------------+--------------+------+-----------------------+--------+
+3 rows in set (0.001 sec)
