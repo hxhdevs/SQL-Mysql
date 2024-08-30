@@ -592,3 +592,34 @@ MariaDB [appsalon]> SELECT * FROM citas
 -- Al hacer uso de LEFT se trae los resultados de la tabla izquierda en la condicione del igualado
 -- Con RIGHT se trae los resultados en comun con la tabla de lado derecho en la igualacion
 
+-- Creando una tabla pivote
+MariaDB [appsalon]> CREATE TABLE citasServicios(
+    -> id INT(11) AUTO_INCREMENT,
+    -> citaId int(11) NOT NULL,
+    -> servicioId INT(11)NOT NULL,
+    -> PRIMARY KEY(id),
+    -> KEY citaId(citaId),
+    -> CONSTRAINT citas_FK
+    -> FOREIGN KEY(citaId)
+    -> REFERENCES citas(id),
+    -> KEY servicioId(servicioId),
+    -> CONSTRAINT servicios_FK
+    -> FOREIGN KEY(servicioId)
+    -> REFERENCES servicios(id)
+    -> );
+Query OK, 0 rows affected (0.032 sec)
+
+MariaDB [appsalon]> show tables;
++--------------------+
+| Tables_in_appsalon |
++--------------------+
+| citas              |
+| citasservicios     |
+| clientes           |
+| reservaciones      |
+| servicios          |
++--------------------+
+5 rows in set (0.001 sec)
+-- Insertando valores a la pivote
+MariaDB [appsalon]> INSERT INTO citasservicios(citaId, servicioId) VALUES (1,8);
+Query OK, 1 row affected (0.003 sec)
