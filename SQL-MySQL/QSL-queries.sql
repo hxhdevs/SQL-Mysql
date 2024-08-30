@@ -579,3 +579,16 @@ MariaDB [appsalon]> describe clientes;
 +----------+-------------+------+-----+---------+----------------+
 5 rows in set (0.014 sec)
 
+-- Uniendo tablas con JOIN
+MariaDB [appsalon]> SELECT * FROM citas
+    -> INNER JOIN clientes ON clientes.id=citas.clienteId;
++----+------------+----------+-----------+----+--------+----------+------------+--------------+
+| id | fecha      | hora     | clienteId | id | nombre | apellido | telefono   | email        |
++----+------------+----------+-----------+----+--------+----------+------------+--------------+
+|  1 | 2024-08-29 | 00:00:00 |         1 |  1 | Elih   | Freecs   | 9531226488 | hxh@mail.com |
++----+------------+----------+-----------+----+--------+----------+------------+--------------+
+1 row in set (0.000 sec)
+
+-- Al hacer uso de LEFT se trae los resultados de la tabla izquierda en la condicione del igualado
+-- Con RIGHT se trae los resultados en comun con la tabla de lado derecho en la igualacion
+
