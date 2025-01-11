@@ -1,0 +1,23 @@
+SELECT * FROM tr_usuarios_ciclo WHERE FK_CICLO = 34 AND FK_ESTATUS = 2
+-- tiene estatus 1 negativo Y 2 positivo
+-- Solicitamos apoyo para habilitar nuevamente la función que nos permite controlar el acceso de los
+-- usuarios al sistema, dicha solicitud se deriva a que los usuarios con estatus "negativo" no deben
+-- de tener acceso al sistema, a fin de controlar los accesos al inicio y termino de los ciclos
+-- agrícolas. Hemos realizado el. cambio de algunos usuarios y el sistema continua permitiendo el 
+-- acceso.
+-- NEGARLE EL ACCESO A USUARIOS EN ESTATUS NEGATIVO(AL PARECER ACTUALMENTE SIGUE DEJANDOLOS ENTRAR)
+-- tienen estatus positivoo checar que onda
+--
+-- 32(NO elegible) Y 7|11(negativo)
+-- 16(cencalado) Y 25(Incompleto)
+-- solicitan que se obtenga el STATUS de 32 7 Y 11 para que hagan su propio analisis ya que la 
+-- importacion del excel NO lleva estos estatus y parece ser que quieren todos los estatuses pára
+-- su propio analisis
+-- SIN FIRMA CAS
+-- Incompleto sin firma
+-- Incompleto expediente
+-- los demas tambien?=!???!
+-- parece que estan en un SP llamado 
+-- descargaProductorExtraordinarioMoralSinPredio
+SELECT * FROM tb_productores WHERE FK_CICLO = 34
+-- checar la consulta del procedimiento almacenado
